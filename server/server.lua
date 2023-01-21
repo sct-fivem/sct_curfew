@@ -17,7 +17,7 @@ RegisterNetEvent("sct_curfew:Req:CreateZone", function(data)
     Zones[_id].readyEnter = false
     Zones[_id].whoCreate = xPlayer.getName()
     Zones[_id].startTime = os.date("%c")
-    Zones[_id].endTime = os.date("%c", os.time() + 20)
+    Zones[_id].endTime = os.date("%c", os.time() + Config.Zones.CoolDownTimer)
     Zones[_id].streetName = data.streetName
     Zones[_id].coords = data.coords
 
