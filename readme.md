@@ -1,5 +1,7 @@
 # sct_curfew
 
+https://youtu.be/7fMgC0p1ir4
+
 # Config
 ```
 // Debug โหมด
