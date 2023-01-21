@@ -11,11 +11,6 @@ Config.Zones = {
     // Cooldown ของวง curfew 
     CoolDownTimer = 10 -- sec
 }
-
-Config.Interface = {
-    // ตั้งค่าเวลาปิด interface เมื่อสีแดงแล้ว
-    CloseInterfaceTimer = 5 * 1000 -- sec
-}
 ```
 # Export Function
 ```lua

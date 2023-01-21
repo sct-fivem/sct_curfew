@@ -21,15 +21,6 @@ AddEventHandler("esx:setJob", function(job)
     ESX.PlayerData.job = job
 end)
 
-AddEventHandler("onResourceStart", function(resource)
-    if resource == GetCurrentResourceName() then
-        SendNUIMessage({
-            action = "UPDATE_CONFIG",
-            data = Config
-        })
-    end
-end)
-
 Citizen.CreateThread(function()
     while true do
         ESX.PlayerData.playerPed = PlayerPedId()
@@ -46,9 +37,9 @@ Citizen.CreateThread(function()
             if dist <= 300 then
                 sleep = 5
                 if value.readyEnter then
-                    DrawMarker(28, value.coords.x, value.coords.y, value.coords.z , 0, 0, 0, 0, 0, 0, Config.Zones.Radius, Config.Zones.Radius, Config.Zones.Radius, 255, 0, 0, 120, 255, 120, 155, 0)
+                    DrawMarker(28, value.coords.x, value.coords.y, value.coords.z, 0, 0, 0, 0, 0, 0, Config.Zones.Radius, Config.Zones.Radius, Config.Zones.Radius, 255, 0, 0, 120, 255, 120, 155, 0)
                 else
-                    DrawMarker(28, value.coords.x, value.coords.y, value.coords.z , 0, 0, 0, 0, 0, 0, Config.Zones.Radius, Config.Zones.Radius, Config.Zones.Radius, 0, 255, 0, 120, 255, 120, 155, 0)
+                    DrawMarker(28, value.coords.x, value.coords.y, value.coords.z, 0, 0, 0, 0, 0, 0, Config.Zones.Radius, Config.Zones.Radius, Config.Zones.Radius, 0, 255, 0, 120, 255, 120, 155, 0)
                 end
             end
         end
@@ -81,7 +72,7 @@ function ResCreateZone(data)
     Zones[data.id].blipsRadius = AddBlipForRadius(data.coords.x, data.coords.y, data.coords.z, Config.Zones.Radius)
     SetBlipColour(Zones[data.id].blipsRadius, 2)
     SetBlipAlpha(Zones[data.id].blipsRadius, 100)
-
+    
     SendNUIMessage({
         action = "CREATE_ZONES",
         data = data
@@ -98,7 +89,6 @@ function ResSyncZone(data)
         Zones[value.id] = value
         Zones[value.id].blipsRadius = AddBlipForRadius(value.coords.x, value.coords.y, value.coords.z,
             Config.Zones.Radius)
-
         if Zones[value.id].readyEnter then
             SetBlipColour(Zones[value.id].blipsRadius, 1)
         else
